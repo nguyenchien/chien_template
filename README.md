@@ -202,6 +202,7 @@ VITE_BASE_URL=/
 ----------------------------------------------------
 
 ***Custom Note 01***
+
 After run command to build, remember modify path for style file.
 
 Before modify:
