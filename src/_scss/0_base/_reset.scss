@@ -1,0 +1,276 @@
+@charset "utf-8";
+@use "_mixin" as mixin;
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+html {
+    font-size: 62.5%;
+    word-break: break-all;
+}
+
+body {
+    text-size-adjust: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+main,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    word-break: break-word;
+    line-break: strict;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+ul:not([class]),
+ol:not([class]) {
+    padding-left: 1.25em;
+}
+
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+span {
+    font-weight: inherit;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: "";
+    content: none;
+}
+
+a {
+    color: inherit;
+    @include mixin.mq(tb) {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+a[class] {
+    text-decoration: none;
+}
+
+ins {
+    background-color: #ff9;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #ff9;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+address {
+    font-style: normal;
+}
+
+sup {
+    vertical-align: text-top;
+    font-size: 0.75em;
+}
+
+sub {
+    vertical-align: text-bottom;
+    font-size: 0.75em;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(var(--border));
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+/* form
+================================================== */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+button,
+select,
+option {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-family: inherit;
+    outline: none;
+    border: 1px solid;
+    border-radius: 0;
+    background: none;
+    @include mixin.mq(sp) {
+        font-size: 1.6rem;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+button {
+    appearance: none;
+    outline: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+select {
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    color: inherit;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+* {
+    box-sizing: border-box;
+}

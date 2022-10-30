@@ -1,0 +1,196 @@
+@use "_mixin" as mixin;
+
+/* sp <--> tb <--> pc
+-------------------------------------- */
+.u-media-query {
+	display: none;
+	font-family: "sp";
+
+	@include mixin.mq(tb) {
+		font-family: "tb";
+	}
+
+	@include mixin.mq(pc) {
+		font-family: "pc";
+	}
+}
+
+.u-view-pc {
+	@include mixin.mq(under_pc) {
+		display: none !important;
+	}
+}
+
+.u-view-tb {
+	@include mixin.mq(sp) {
+		display: none !important;
+	}
+
+	@include mixin.mq(pc) {
+		display: none !important;
+	}
+}
+
+.u-view-sp-small {
+	display: none;
+
+	@include mixin.mq(sp_small) {
+		display: block !important;
+	}
+}
+
+.u-view-sp {
+	@include mixin.mq(tb) {
+		display: none !important;
+	}
+}
+
+.u-view-under-tb {
+	@include mixin.mq(pc) {
+		display: none !important;
+	}
+}
+
+.u-view-upper-tb {
+	@include mixin.mq(sp) {
+		display: none !important;
+	}
+}
+
+/* overflow
+-------------------------------------- */
+//Add u-overflow-sec to the section if there are elements that overflow the content width.
+//Then wrap it with div.u-overflow-wrap
+.u-overflow {
+	&-wrap {
+		overflow: auto;
+	}
+
+	&-sec {
+		overflow: hidden;
+
+		@include mixin.mq(tb) {
+			min-width: var(--contents_width_with_padding);
+		}
+	}
+
+	&__content {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 40px;
+
+		&-img {
+			width: 50%;
+
+			img {
+				float: right;
+				max-width: none;
+				width: 50vw;
+				min-width: 100%;
+			}
+		}
+
+		&-area-txt {
+			box-sizing: border-box;
+			width: 50%;
+			padding-left: 30px;
+		}
+	}
+}
+
+/* text
+-------------------------------------- */
+.u-uppercase {
+	text-transform: uppercase;
+}
+
+.u-capitalize {
+	text-transform: capitalize;
+}
+
+/* link
+-------------------------------------- */
+a.u-alpha {
+	display: block;
+	text-decoration: none;
+
+	@include mixin.mq {
+		@include mixin.trans;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
+
+a.u-zoom {
+	display: block;
+	text-decoration: none;
+
+	.u-zoom__img {
+		display: block;
+
+		&-wrap {
+			display: block;
+			overflow: hidden;
+		}
+	}
+
+	@include mixin.mq(tb) {
+		.u-zoom__img {
+			@include mixin.trans;
+		}
+
+		&:hover {
+			.u-zoom__img {
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+
+/* layout
+-------------------------------------- */
+.u-inner {
+	box-sizing: border-box;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	@include mixin.mq(tb) {
+		width: 100%;
+		max-width: var(--contents_width);
+		margin-right: auto;
+		margin-left: auto;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.u-inner-sp {
+	@include mixin.mq(sp) {
+		padding-right: 20px;
+		padding-left: 20px;
+		box-sizing: border-box;
+	}
+}
+
+.u-inner-upper-tb {
+	@include mixin.mq(tb) {
+		width: 100%;
+		max-width: var(--contents_width);
+		margin-right: auto;
+		margin-left: auto;
+		padding-right: 0;
+		padding-left: 0;
+		box-sizing: border-box;
+	}
+}
+
+/* font
+-------------------------------------- */
+.u-font-en {
+	font-family: "Poppins", sans-serif;
+	line-height: 1.1;
+	font-weight: 500;
+}

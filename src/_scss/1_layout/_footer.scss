@@ -1,0 +1,54 @@
+@use "../0_base/_mixin" as mixin;
+
+/* .l-footer
+================================================ */
+.l-footer {
+	position: relative;
+	padding: 15px 0;
+	background: #ccc;
+	text-align: center;
+	@include mixin.mq(tb) {
+		padding: 100px 0;
+	}
+}
+
+/* .l-footer-page-top
+================================================ */
+.l-footer-page-top {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(var(--black));
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 10;
+	&__link {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    svg {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+	}
+	@include mixin.mq(tb) {
+		opacity: 0;
+		right: 30px;
+		bottom: 60px;
+		@include mixin.trans(opacity);
+		&.is-shown {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}

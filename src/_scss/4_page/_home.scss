@@ -1,0 +1,73 @@
+@use "../0_base/_mixin" as mixin;
+@use "sass:math";
+
+section {
+	color: #fff;
+	padding: 30px 0;
+
+	h3 {
+		font-size: 2rem;
+		text-transform: capitalize;
+		text-align: center;
+	}
+
+	@include mixin.mq(tb) {
+		h3 {
+			font-size: 4rem;
+		}
+	}
+}
+
+/*
+ .home-welcome
+ ========================================================================== */
+.home-welcome {
+	background-color: #6cc4de;
+
+	&__head {
+		font-size: 3rem;
+		text-align: center;
+
+		span {
+			text-transform: uppercase;
+		}
+	}
+
+	@include mixin.mq(tb) {
+		&__head {
+			font-size: 6rem;
+		}
+	}
+}
+
+/*
+ .home-html-css
+ ========================================================================== */
+.home-html-css {
+	background-color: #ec8785;
+}
+
+/*
+ .home-js
+ ========================================================================== */
+.home-js {
+	background-color: #a7c53c;
+
+	&__toogle {
+		border: 1px solid currentColor;
+		padding: 10px;
+		margin-bottom: 20px;
+	}
+
+	&__tab {
+		border: 1px solid currentColor;
+		padding: 10px;
+	}
+}
+
+/*
+ .home-other
+ ========================================================================== */
+.home-other {
+	background: #cd52e8 url(../../assets/img/common/img_pixel01.png) no-repeat;
+}

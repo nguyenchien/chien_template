@@ -1,0 +1,16 @@
+@use "../0_base/_mixin" as mixin;
+@use "sass:math";
+
+/*
+  .c-head01
+============================================================*/
+.c-head01 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    
+    @include mixin.mq(tb) {
+      font-size: 5rem;
+    }
+}

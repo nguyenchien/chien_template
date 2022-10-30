@@ -1,0 +1,42 @@
+@use "../0_base/_mixin" as mixin;
+@use "sass:math";
+
+// fadein 下からフェードインします
+.js-c-anime-elem[data-anime="fadein-up"] {
+	opacity: 0;
+	transform: translateY(30px);
+	@include mixin.trans(all,.6s,ease);
+	&.is-animated {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+// fadein 左からフェードインします
+.js-c-anime-elem[data-anime="fadein-left"] {
+	opacity: 0;
+	transform: translateX(-30px);
+	@include mixin.trans(all,.6s,ease);
+	&.is-animated {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+// fadein 右からフェードインします
+.js-c-anime-elem[data-anime="fadein-right"] {
+	opacity: 0;
+	transform: translateX(30px);
+	@include mixin.trans(all,.6s,ease);
+	&.is-animated {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+// delay 3の倍数が自然です。
+.js-c-anime-elem {
+	@for $i from 1 through 20 {
+		$j: $i*0.1;
+		&[data-anime-delay="#{$j}"] {
+			transition-delay: $j+s;
+		}
+	}
+}

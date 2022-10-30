@@ -1,0 +1,64 @@
+{
+  "name": "agl_vite_template",
+  "version": "1.0.0",
+  "description": "AGL's template, using vite",
+  "engines": {
+    "node": ">=12.2.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview",
+    "external": "vite build --emptyOutDir --watch --mode=external",
+    "htmlhint": "htmlhint src/**/*.{html,ejs} --rulesdir plugins/utils/htmlhint/rules/",
+    "stylelint": "stylelint src/**/*.{vue,css,scss,sass,less,styl,svelte} --custom-formatter=node_modules/stylelint-formatter-pretty",
+    "stylelint:fix": "stylelint src/**/*.{vue,css,scss,sass,less,styl,svelte} --custom-formatter=node_modules/stylelint-formatter-pretty --fix",
+    "eslint": "eslint src/_public/assets/js/**/*.js -f eslint-formatter-pretty",
+    "eslint:fix": "eslint src/_public/assets/js/**/*.js -f eslint-formatter-pretty --fix",
+    "lint": "npm run htmlhint && npm run stylelint && npm run eslint",
+    "lint:fix": "npm run htmlhint && npm run stylelint:fix && npm run eslint:fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allgrow-labo/agl_vite_template"
+  },
+  "author": "AGL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allgrow-labo/agl_vite_template/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.9",
+    "cosmiconfig": "^7.0.1",
+    "debug": "^4.3.3",
+    "ejs": "^3.1.6",
+    "eslint": "^8.16.0",
+    "eslint-formatter-pretty": "^4.1.0",
+    "fs-extra": "^10.0.0",
+    "htmlhint": "^1.1.4",
+    "imagemin": "^7.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^9.0.0",
+    "imagemin-webp": "^6.0.0",
+    "jquery": "^3.6.0",
+    "js-beautify": "^1.14.0",
+    "pathe": "^0.2.0",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.6",
+    "sass": "^1.49.0",
+    "stylelint": "^14.8.2",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-formatter-pretty": "^3.1.0",
+    "stylelint-scss": "^4.2.0",
+    "vite": "^2.9.9"
+  },
+  "homepage": "https://github.com/allgrow-labo/agl_vite_template",
+  "dependencies": {
+    "slick-carousel": "^1.8.1"
+  }
+}

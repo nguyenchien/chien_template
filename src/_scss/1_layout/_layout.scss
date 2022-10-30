@@ -1,0 +1,51 @@
+@use "../0_base/_mixin" as mixin;
+
+html {
+    overflow: auto;
+
+    &:not([lang="ja"]) {
+        word-break: break-word;
+    }
+}
+
+body {
+    min-width: 320px;
+    font-family: "Noto Sans JP", sans-serif;
+    color: rgb(var(--black));
+    line-height: 2;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    overflow: hidden;
+    padding-top: 70px;
+    @include mixin.mq(tb) {
+        min-width: var(--contents_width_with_padding);
+        font-size: 1.6rem;
+        padding-top: 140px;
+    }
+}
+
+.l-wrapper {
+    position: relative;
+}
+
+.l-container {
+    @include mixin.mq(tb) {
+        &.is-col2 {
+            display: grid;
+            grid-template-columns: var(--sidebar_width) auto;
+            gap: 0 20px;
+            width: var(--contents_width);
+            margin: 0 auto;
+
+            .l-contents {
+                flex: 1;
+            }
+
+            .l-sidebar {
+                order: -1;
+                flex-basis: var(--sidebar_width);
+            }
+        }
+    }
+}

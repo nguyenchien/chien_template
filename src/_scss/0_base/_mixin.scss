@@ -1,0 +1,34 @@
+@use "sass:map";
+@use "_vars" as var;
+
+// transform
+@mixin trans($prop: all, $time: 0.3s, $easing: ease) {
+    transition: $prop $time $easing;
+}
+
+// breakpoints
+$breakpoints: (
+    "sp_small": "all and (max-width: 374px)",
+    "sp": "all and (max-width: 767px)",
+    "tb": "all and (min-width: 768px)",
+    "pc": "all and (min-width: "+var.$contents_width_with_padding+")",
+    "pc_large": "all and (min-width: "+(var.$contents_width_with_padding + 200)")",
+    "under_pc": "all and (max-width: "+(var.$contents_width_with_padding - 1)+")",
+) !default;
+
+@mixin mq($breakpoint: tb) {
+    @media #{map.get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// vh,vw for iOS common.jsとCSS変数の変更で連携しています。
+@mixin vh($prop: height, $val: 100) {
+    #{$prop}: #{$val}vh;
+    #{$prop}: calc(var(--vh, 1vh) * #{$val});
+}
+
+@mixin vw($prop: width, $val: 100) {
+    #{$prop}: #{$val}vw;
+    #{$prop}: calc(var(--vw, 1vw) * #{$val});
+}
