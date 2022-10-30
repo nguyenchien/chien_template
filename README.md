@@ -205,12 +205,12 @@ VITE_BASE_URL=/
 
 After run command to build, remember modify path for style file.
 
-Before modify:
+>Before modify:
 ```
 <link rel="stylesheet" href="/assets/css/style.css">
 ```
 
-End modify:
+>End modify:
 ```
 <link rel="stylesheet" href="./assets/css/style.css">
 ```
