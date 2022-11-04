@@ -1,9 +1,11 @@
 .js-c-switch-tab {
-	cursor: pointer;
+    cursor: pointer;
 }
+
 .js-c-switch-content {
-	display: none;
-	&.is-active {
-		display: block;
-	}
+    display: none;
+
+    &.is-active {
+        display: block;
+    }
 }

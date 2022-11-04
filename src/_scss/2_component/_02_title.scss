@@ -11,6 +11,6 @@
     text-transform: uppercase;
     
     @include mixin.mq(tb) {
-      font-size: 5rem;
+        font-size: 5rem;
     }
 }
