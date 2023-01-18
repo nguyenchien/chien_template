@@ -16,6 +16,9 @@ const UA = navigator.userAgent
 //Hash
 const HASH = location.hash
 
+//viewport
+const VIEWPORT = document.querySelector('meta[name="viewport"]');
+
 /*
   Define the functions common
 ===============================================================*/
@@ -70,21 +73,36 @@ $(function () {
 	const winWidth = $window.innerWidth()
 	let bodyMinWidth = $('body').css('min-width')
 			bodyMinWidth = Number(bodyMinWidth.replace('px', ''))
-	// SP:320px->320
+	// SP:375px->
 	// TB:auto->0 フルリキッド時
 	// TB:1120px->1120 リキッド時 ここだけ処理される
 	// 0が来る（リキッド）時計算できなくなるので省く（win-width: auto;の時）
-	const doCalculateViewport = bodyMinWidth !== 0 && winWidth > 768
+	const doCalculateViewport = bodyMinWidth !== 0 && winWidth > 767
 	if (doCalculateViewport) {
 		let value = winWidth / bodyMinWidth
 	
 		const isSp_ = UA.indexOf('iPhone') > -1 || (UA.indexOf('Android') > -1 && UA.indexOf('Mobile') > -1);
 		const isTab_ = !isSp_ && (UA.indexOf('iPad') > -1 || (UA.indexOf('Macintosh') > -1 && 'ontouchend' in document) || UA.indexOf('Android') > -1)
 		if (isTab_) {
-			$('meta[name="viewport"]').attr('content', 'width=' + winWidth + ', initial-scale=' + value)
+			VIEWPORT.attr('content', 'width=' + winWidth + ', initial-scale=' + value)
 		}
 	}
 })
+
+/* viewport fix
+------------------------------------- */
+$(function () {
+	function switchViewport() {
+		const value = window.outerWidth > 375
+				? 'viewport-fit=cover,width=device-width'
+				: `viewport-fit=cover,width=375`;
+		if (VIEWPORT.getAttribute('content') !== value) {
+			VIEWPORT.setAttribute('content', value);
+		}
+		addEventListener('resize', switchViewport, false);
+	}
+	switchViewport();
+});
 
 /* vh,vw for iOS
 ------------------------------------- */
@@ -188,7 +206,7 @@ window.addEventListener('load', () => {
 $(function () {
 	let $pageTop = $('.js-page-top')
 	$window.on('load scroll', () => {
-		if (getDevice() === 'sp') return
+		//if (getDevice() === 'sp') return
 		//スマホ以外はページトップ表示
 		const scrollPosition = 300
 		const scrollValue = $(this).scrollTop()
@@ -235,17 +253,6 @@ $(function () {
 	})
 })
 
-/* Toggle click
-------------------------------------- */
-$(function () {
-	let $toggleTrigger = $('.js-c-toggle-trigger')
-	$toggleTrigger.on('click', function() {
-		const $this = $(this)
-		$this.toggleClass(CLASS_ACTIVE)
-		$this.next('.js-c-toggle-content').slideToggle(ANIMATE_SPEED)
-	})
-})
-
 /* Tab Switch
 ------------------------------------- */
 $(function () {
@@ -287,6 +294,52 @@ $(function () {
 			// class add
 			$tabContentList.children('.js-c-switch-content[data-tab-num="' + tabNum + '"]').addClass(CLASS_ACTIVE)
 		}
+	}
+})
+
+/* Toggle click
+------------------------------------- */
+$(function () {
+	let $toggleTrigger = $('.js-c-toggle-trigger')
+	$toggleTrigger.on('click', function() {
+		const $this = $(this)
+		$this.toggleClass(CLASS_ACTIVE)
+		$this.next('.js-c-toggle-content').slideToggle(ANIMATE_SPEED)
+	})
+})
+
+/* js-header fixed
+------------------------------------- */
+$(function() {
+	let $header = $('.js-header'),
+			$headerHeight = $header.outerHeight();
+	$(window).on('scroll', function () {
+		let	$scroll = $(window).scrollTop(),
+				$mvHeight = $('.js-mv').outerHeight()
+		if($scroll >= $headerHeight && $scroll < $mvHeight) {
+			$header.addClass('is-hide').removeClass('is-fixed');
+		}
+		else if($scroll >= $mvHeight) {
+			$header.removeClass('is-hide').addClass('is-fixed');
+		}
+		else {
+			$header.removeClass('is-hide is-fixed');
+		}
+	});
+})
+
+/* js-zip
+------------------------------------- */
+$(function() {
+	const zip = $('.js-zip');
+	if(zip.length) {
+		zip.on('click', function(){
+			AjaxZip3.zip2addr('your-zip','','your-pref','your-addr');
+			AjaxZip3.onSuccess = function() {
+				$('.js-addr').focus();
+			};
+			return false;
+		});
 	}
 })
 
